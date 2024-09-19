@@ -1,5 +1,5 @@
 try:
-    import gnureadline as readline
+    import gnureadline as readline  # type: ignore
 except ImportError:
     import readline
 
@@ -32,7 +32,7 @@ readline.parse_and_bind("set editing-mode vi")
 
 load_dotenv()
 
-model = ChatOpenAI(model="gpt-3.5-turbo")
+model = ChatOpenAI(model="gpt-4o-mini")
 
 store = {}
 
@@ -80,7 +80,7 @@ def get_session_history(session_id: str) -> BaseChatMessageHistory:
 config = {"configurable": {"session_id": "abc2"}}
 
 trimmer = trim_messages(
-    max_tokens=65,
+    max_tokens=2000,
     strategy="last",
     token_counter=model,
     include_system=True,
